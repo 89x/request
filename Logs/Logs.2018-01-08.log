@@ -1,0 +1,13 @@
+[2018-01-08 11:57:13] - [DEBUG] - [connectionpool.py] - [824]: Starting new HTTPS connection (1): m.cmall.com
+[2018-01-08 11:57:13] - [DEBUG] - [connectionpool.py] - [396]: https://m.cmall.com:443 "GET /goodsSite/mall/bannerList HTTP/1.1" 200 None
+[2018-01-08 11:57:13] - [DEBUG] - [run_method.py] - [40]: 调用get方法成功
+[2018-01-08 11:57:13] - [DEBUG] - [Prodect_Start.py] - [44]: 测试通过
+[2018-01-08 11:57:13] - [DEBUG] - [connectionpool.py] - [824]: Starting new HTTPS connection (1): www.cmall.com
+[2018-01-08 11:57:13] - [DEBUG] - [connectionpool.py] - [396]: https://www.cmall.com:443 "POST /memberSite/sso/loginJson HTTP/1.1" 200 None
+[2018-01-08 11:57:13] - [DEBUG] - [run_method.py] - [37]: 调用post方法成功
+[2018-01-08 11:57:13] - [DEBUG] - [Prodect_Start.py] - [44]: 测试通过
+[2018-01-08 11:57:13] - [DEBUG] - [connectionpool.py] - [824]: Starting new HTTPS connection (1): m.cmall.com
+[2018-01-08 11:57:13] - [DEBUG] - [connectionpo[2018-01-08 11:57:13] - [DEBUG] - [connectionpool.py] - [396]: https://m.cmall.com:443 "POST /orderPaySite/tude/cart/cartList HTTP/1.1" 200 None
+ol.py] - [396]: https://m.cmall.com:443 "POST /orderPaySite/tude/cart/cartList HTTP/1.1" 200 None
+[2018-01-08 11:57:13] - [DEBUG] - [run_method.py] - [37]: 调用post方法成功
+[2018-01-08 11:57:13] - [ERROR] - [Prodect_Start.py] - [47]: 测试失败
