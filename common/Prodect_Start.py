@@ -12,6 +12,7 @@ from common.get_request_data import RequestData
 from common.common_util import CommonUtil
 from config import config
 import logging
+import datetime
 from common.logging_setting import logging_setting
 import os
 
@@ -28,7 +29,8 @@ class RunMain:
             os.remove(r"{path}".format(path=logs_path))
         logging_setting(logs_path)
         #测试启止时间
-        sa = config.get_time_value
+       # sa = config.get_time_value.get_time_diff(start_time=start_time,stop_time=stop_time)
+       # print(sa)
 
         #用例主体方法
         res = None
@@ -45,7 +47,7 @@ class RunMain:
                 res = self.run_method.run_main(request_mode,url,data,hander)
                 if self.util.is_contain(expect,res):
                     self.data.write_excel(i,"pass")
-                    logging.debug("test case (%s) True"%is_number)
+                    logging.debug("test case (%s) True"% is_number)
                 else:
                     self.data.write_excel(i,'fail')
                     logging.error("test case (%s) Flase"%is_number)
