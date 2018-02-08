@@ -25,7 +25,10 @@ class RunMethod:
         if hander!=None:
             res=requests.get(url=url,data=data,headers=hander).json()
         else:
-            res=requests.get(url=url,data=data).json()
+            try:
+                res=requests.get(url=url,data=data).json()
+            except:
+                logging.error("url is None")
         return res
     #缺少data为j空判断
 
