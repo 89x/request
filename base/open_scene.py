@@ -15,7 +15,7 @@ import xlrd
 
 
 def open_excel_scene():
-    data=xlrd.open_workbook(os.path.abspath('..'+'/excel/Scenario.xls'))
+    data=xlrd.open_workbook(os.path.abspath('..'+'/excel/scene/Scenario.xls'))
 #print(data.sheet_names())
     table=data.sheets()[0]
     cnow = table.nrows
