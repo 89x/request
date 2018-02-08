@@ -9,16 +9,18 @@
 import xlrd
 import os
 from xlutils.copy import copy
-
+from base.open_scene import open_excel_scene
 
 
 class OpenExcel():
-    def __init__(self,file_name=None,sheet_id=None):
+    def __init__(self,file_name=None,sheet_id=None,open_scene=open_excel_scene()):
         if file_name:
             self.file_name=file_name
             self.sheet_id=sheet_id
         else:
-            self.file_name=os.path.abspath('..'+'/excel/11.xls')
+            self.open_scene = open_scene
+            print(open_scene)
+            self.file_name=os.path.abspath('..' + '/excel/testcase/%s' %self.open_scene)
             self.sheet_id=0
         self.data = self.get_data()
         #获取sheet内容
