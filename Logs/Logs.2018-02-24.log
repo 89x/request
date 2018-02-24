@@ -1,0 +1,10 @@
+[2018-02-24 22:43:54] - [DEBUG] - [_new_conn] - [824]: Starting new HTTPS connection (1): m.cmall.com
+[2018-02-24 22:43:54] - [DEBUG] - [_make_request] - [396]: https://m.cmall.com:443 "GET /goodsSite/mall/bannerList HTTP/1.1" 200 None
+[2018-02-24 22:43:54] - [DEBUG] - [get_go_run] - [60]: test case (cmall-1) True
+[2018-02-24 22:43:54] - [DEBUG] - [_new_conn] - [824]: Starting new HTTPS connection (1): www.cmall.com
+[2018-02-24 22:43:54] - [DEBUG] - [_make_request] - [396]: https://www.cmall.com:443 "POST /memberSite/sso/loginJson HTTP/1.1" 200 None
+[2018-02-24 22:43:54] - [DEBUG] - [get_go_run] - [60]: test case (cmall-2) True
+[2018-02-24 22:43:54] - [DEBUG] - [_new_conn] - [824]: Starting new HTTPS connection (1): m.cmall.com
+[2018-02-24 22:43:55] - [DEBUG] - [_make_request] - [396]: https://m.cmall.com:443 "POST /orderPaySite/tude/cart/cartList HTTP/1.1" 200 None
+[2018-02-24 22:43:55] - [ERROR] - [get_go_run] - [63]: test case (cmall-3) Flase
+1
