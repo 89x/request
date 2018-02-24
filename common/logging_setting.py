@@ -10,7 +10,7 @@ from config.config import *
 
 def logging_setting(file_path, file_mode="w"):
     logging.basicConfig(
-        level=logging.INFO,
+        level=logging.DEBUG,
         format='[%(asctime)s] - [%(levelname)s] - [%(funcName)s] - [%(lineno)d]: %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S',
         filename=file_path,

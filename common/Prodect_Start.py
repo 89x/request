@@ -15,6 +15,7 @@ import logging
 import datetime
 from common.logging_setting import logging_setting
 import os
+from common.dependent_data import DependtndData
 
 class RunMain:
     def __init__(self):
@@ -43,8 +44,17 @@ class RunMain:
             data = self.data.get_data_json(i)
             expect=self.data.get_expect_data(i)
             hander = self.data.get_is_hander(i)
+            depend_case = self.data.is_depend(i)
             if is_run == True:
+                if depend_case != None:
+                    self.depend_data = DependtndData()
+                    #获取依赖的响应数据
+                    depend_response_data = self.depend_data.get_data_for_key(i)
+                    #获取依赖的key
+                    depend_key = self.data.get_depend_data(i)
+                    request_mode[depend_key]= depend_response_data
                 res = self.run_method.run_main(request_mode,url,data,hander)
+
                 if self.util.is_contain(expect,res):
                     self.data.write_excel(i,"pass")
                     logging.debug("test case (%s) True"% is_number)

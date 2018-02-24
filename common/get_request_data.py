@@ -94,3 +94,29 @@ class RequestData:
         col=int (data_config.get_result())
         self.open_excel.write_value(row,col,value)
 
+    #获取依赖数据的key
+    def get_dependent_key(self,row):
+        col = int(data_config.get_data_depend())
+        depent_key = self.open_excel.get_all_value(row,col)
+        if depent_key == '':
+            return None
+        else:
+            return depent_key
+
+    #判断是否有数据依赖
+    def is_depend(self,row):
+        col = int(data_config.get_field_depend())
+        depend_case_id = self.open_excel.get_all_value(row,col)
+        if depend_case_id == '':
+            return None
+        else:
+            return depend_case_id
+
+    #获取数据依赖字段
+    def get_depend_data(self,row):
+        col = int(data_config.get_field_depend())
+        data= self.open_excel.get_all_value(row,col)
+        if data == "":
+            return None
+        else:
+            return data

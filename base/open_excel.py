@@ -45,10 +45,29 @@ class OpenExcel():
 
         #根据对应的numberID找到行的内容
     def get_rows_data(self,case_id):
-        pass
+        row_num = self.get_row_num(case_id)
+        row_data = self.get_row_value(row_num)
+        return  row_data
+
         #根据对应的numberid找到对应的行号
     def get_row_num(self,case_id):
+        num = 0
+        clos_data = self.get_cols_data()
+        for clos_data in clos_data:
+            if case_id in clos_data:
+                return num
+            num = num+1
+
         pass
         #根据行号，找到该行的内容
     def get_row_value(self,row):
-        pass
+        tables = self.data
+        row_data = tables.row_value(row)
+        return row_data
+        #获取某一列的内容
+    def get_cols_data(self,col_id=None):
+        if col_id != None:
+            cols = self.data.col_values(col_id)
+        else:
+            cols = self.data.col_values(0)
+        return cols

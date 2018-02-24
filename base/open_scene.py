@@ -24,7 +24,6 @@ def open_excel_scene():
             pass
         else:
             scenen_run =table.cell_value(x,0)
-            print("是否执行:",scenen_run)
             if scenen_run !="Y":
                 pass
             else:

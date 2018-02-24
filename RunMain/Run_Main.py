@@ -7,9 +7,7 @@
 @返回结果:
 @调用示例:
 *********************************************************************************************************************'''
-from common import logging_setting
 from common.Prodect_Start import RunMain
-from config import config
 
 if __name__ == '__main__':
     op2 = RunMain()
