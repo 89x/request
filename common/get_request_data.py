@@ -10,8 +10,7 @@
 from base.open_excel import OpenExcel
 from common.open_json import *
 from config import data_config
-
-
+import logging
 class RequestData:
     def __init__(self):
         self.open_excel=OpenExcel()

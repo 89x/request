@@ -12,16 +12,16 @@ from common.get_request_data import RequestData
 from common.common_util import CommonUtil
 from config import config
 import logging
-import datetime
 from common.logging_setting import logging_setting
 import os
 from common.dependent_data import DependtndData
-
+from common.send_email import SendMail
 class RunMain:
     def __init__(self):
         self.run_method=RunMethod()
         self.data=RequestData()
         self.util=CommonUtil()
+        self.send_email=SendMail()
     #程序执行主入口
     def get_go_run(self):
         #日志打印配置
@@ -35,6 +35,8 @@ class RunMain:
 
         #用例主体方法
         res = None
+        pass_count= []
+        fail_count= []
         rows_count=self.data.get_case_lines()
         for i in range(1,rows_count):
             url = self.data.get_request_url(i)
@@ -57,7 +59,14 @@ class RunMain:
 
                 if self.util.is_contain(expect,res):
                     self.data.write_excel(i,"pass")
+                    pass_count.append(i)
                     logging.debug("test case (%s) True"% is_number)
+                    logging.info("pass_count:%s True"% len(pass_count))
                 else:
-                    self.data.write_excel(i,'fail')
+                    self.data.write_excel(i,res)
+                    fail_count.append(i)
                     logging.error("test case (%s) Flase"%is_number)
+                    logging.info("fail_count:%s True"% len(fail_count))
+        logging.debug("发送邮件中")
+        self.send_email.send_main(pass_count,fail_count)
+        logging.debug("发送邮件成功")
