@@ -30,13 +30,25 @@ class RunMethod:
             except:
                 logging.error("url is None")
         return res
-    #缺少data为j空判断
+    def json_main(self,url,data=None,hander=None):
+        res = None
+        if hander !=None:
+            res =requests.post(url=url,json=data,hander=hander).json()
+        else:
+            try:
+                res=requests.post(url=url,json=data).json()
+            except:
+                logging.error("url is None")
+        return res
+
 
 
     def run_main(self,request_mode,url,data=None,hander=None):
         flag=None
         if request_mode == 'post':
             flag= self.post_main(url,data,hander)
-        else:
+        elif request_mode =="get":
             flag= self.get_main(url,data,hander)
+        else:
+            flag= self.json_main(url,data,hander)
         return json.dumps(flag,ensure_ascii=False,sort_keys=True,indent=2)
