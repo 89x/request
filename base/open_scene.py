@@ -12,20 +12,16 @@
 
 import os
 import xlrd
-
+import logging
 
 def open_excel_scene():
     data=xlrd.open_workbook(os.path.abspath('..'+'/excel/scene/Scenario.xls'))
-#print(data.sheet_names())
     table=data.sheets()[0]
     cnow = table.nrows
-    for x in range(cnow):
-        if x<2:
-            pass
+    for x in range(2,cnow):
+        scenen_run =table.cell_value(x,0)
+        if scenen_run == "N":
+            continue
         else:
-            scenen_run =table.cell_value(x,0)
-            if scenen_run !="Y":
-                pass
-            else:
-                scenen_case = table.cell_value(x,2)
-                return scenen_case
+            scenen_case = table.cell_value(x, 2)
+        return scenen_case

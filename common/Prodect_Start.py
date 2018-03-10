@@ -16,6 +16,9 @@ from common.logging_setting import logging_setting
 import os
 from common.dependent_data import DependtndData
 from common.send_email import SendMail
+from base.Message_push import get_Message_push
+from base.open_header import OpenHeader
+from common.open_json import OpenJson
 class RunMain:
     def __init__(self):
         self.run_method=RunMethod()
@@ -29,10 +32,6 @@ class RunMain:
         if os.path.exists(r"{path}".format(path=logs_path)):
             os.remove(r"{path}".format(path=logs_path))
         logging_setting(logs_path)
-        #测试启止时间
-       # sa = config.get_time_value.get_time_diff(start_time=start_time,stop_time=stop_time)
-       # print(sa)
-
         #用例主体方法
         res = None
         pass_count= []
@@ -47,7 +46,7 @@ class RunMain:
             expect=self.data.get_expect_data(i)
             hander = self.data.get_is_hander(i)
             depend_case = self.data.is_depend(i)
-            if is_run == True:
+            if is_run ==True:
                 if depend_case != None:
                     self.depend_data = DependtndData()
                     #获取依赖的响应数据
@@ -55,18 +54,27 @@ class RunMain:
                     #获取依赖的key
                     depend_key = self.data.get_depend_data(i)
                     request_mode[depend_key]= depend_response_data
-                res = self.run_method.run_main(request_mode,url,data,hander)
-
-                if self.util.is_contain(expect,res):
+                if hander =="w":
+                    res=self.run_method.run_main(request_mode,url,data)
+                    op_hander=OpenHeader(url,data)
+                    op_hander.write_cookie()
+                elif  hander == "y":
+                    op_json = OpenJson(os.path.abspath('..'+'/json/cookies.json'))
+                    cookie = op_json.get_cookie()
+                    res = self.run_method.run_main(request_mode,url,data,cookie)
+                else:
+                    res = self.run_method.run_main(request_mode, url, data)
+                if  self.util.is_contain(expect,res):
                     self.data.write_excel(i,"pass")
                     pass_count.append(i)
                     logging.debug("test case (%s) True"% is_number)
-                    logging.info("pass_count:%s True"% len(pass_count))
+                    logging.debug("pass_count:%s True"% len(pass_count))
                 else:
                     self.data.write_excel(i,res)
                     fail_count.append(i)
                     logging.error("test case (%s) Flase"%is_number)
-                    logging.info("fail_count:%s True"% len(fail_count))
+                    logging.debug("fail_count:%s True"% len(fail_count))
         logging.debug("发送邮件中")
         self.send_email.send_main(pass_count,fail_count)
+        get_Message_push(pass_count,fail_count)
         logging.debug("发送邮件成功")

@@ -1,4 +1,6 @@
-{"bannerlist":{"clientType":"H5","abbr":"CN","pageNo":"1","pageSize":"20"},
-"name":{"loginAccount":"苏小谢","password":"xiehengda","rememberMe":"0"},
-"cartlist":{"abbr":"CN","pageNo":"1","clientType":"H5","pageSize":"30"}
+{
+"bannerlist":{"loginAccount":"苏小谢","password":"xiehengda"},
+"loginJson":{"loginAccount":"18697980508","password":"xiehengda","rememberMe":"0"},
+"cartlist":{"abbr":"CN","pageNo":"1","clientType":"H5","pageSize":"30"},
+"shrrr":{"phoneNo":"18801880488"}
 }

@@ -9,37 +9,38 @@
 import requests
 import logging
 import json
-import pymysql
 
 class RunMethod:
-    def post_main(self,url,data,hander=None):
+    def post_main(self,url,data=None,hander=None):
         res=None
         if hander!=None:
-            res=requests.post(url=url,data=data,hesder=hander).json()
+            res=requests.post(url=url,data=data,headers=hander)
         else:
-            res=requests.post(url=url,data=data).json()
-        return res
+            res=requests.post(url=url,data=data)
+        return res.json()
+
 
     def get_main(self,url,data=None,hander=None):
         res=None
         if hander!=None:
-            res=requests.get(url=url,data=data,headers=hander).json()
+            res=requests.get(url=url,params=data,headers=hander)
         else:
-            try:
-                res=requests.get(url=url,data=data).json()
-            except:
-                logging.error("url is None")
-        return res
+            res=requests.get(url=url,params=data)
+        return res.json()
     def json_main(self,url,data=None,hander=None):
         res = None
-        if hander !=None:
-            res =requests.post(url=url,json=data,hander=hander).json()
-        else:
-            try:
-                res=requests.post(url=url,json=data).json()
-            except:
-                logging.error("url is None")
-        return res
+        try:
+            if hander !=None:
+                res =requests.post(url=url,json=data,headers=hander)
+            else:
+                try:
+                    res=requests.post(url=url,json=data)
+                except:
+                    logging.error("url is None")
+                return res.json()
+        except:
+            logging.error("timeout")
+
 
 
 
@@ -51,4 +52,13 @@ class RunMethod:
             flag= self.get_main(url,data,hander)
         else:
             flag= self.json_main(url,data,hander)
-        return json.dumps(flag,ensure_ascii=False,sort_keys=True,indent=2)
+        return json.dumps(flag, ensure_ascii=False)
+
+        #return json.dumps(flag,ensure_ascii=False,sort_keys=True,indent=2)
+
+
+if __name__ == '__main__':
+    re = RunMethod()
+    #re.run_main(request_mode="get",url="http://www.cmall.com/memberSite/sso/loginJson",data="loginAccount=苏小谢&password=xiehengda")
+    #sa=requests.get(url="http://www.cmall.com/memberSite/sso/loginJson",params="loginAccount=18697980508&password=xiehengda")
+    #print(sa.headers)

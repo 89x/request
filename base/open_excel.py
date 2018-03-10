@@ -10,6 +10,7 @@ import xlrd
 import os
 from xlutils.copy import copy
 from base.open_scene import open_excel_scene
+import logging
 
 
 class OpenExcel():
@@ -19,7 +20,6 @@ class OpenExcel():
             self.sheet_id=sheet_id
         else:
             self.open_scene = open_scene
-            print(open_scene)
             self.file_name=os.path.abspath('..' + '/excel/testcase/%s' %self.open_scene)
             self.sheet_id=0
         self.data = self.get_data()
@@ -71,3 +71,6 @@ class OpenExcel():
         else:
             cols = self.data.col_values(0)
         return cols
+
+if __name__ == '__main__':
+    cd =OpenExcel()

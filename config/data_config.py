@@ -142,10 +142,10 @@ def get_result():
 def get_hander_value():
     hander = {
 
-        'Date': 'Fri, 15 Dec 2017 03:56:07 GMT', 'Content-Type': 'application/json;charset=UTF-8',
-         'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive',
-         'Set-Cookie': 'JSESSIONID=B2453D2727835C412D2D9486CEA587B0; Path=/memberSite/; HttpOnly, enshrines_key=0; Domain=cmall.com; Path=/, User_id=320187; Domain=cmall.com; Path=/, User_code=0; Domain=cmall.com; Path=/, nickName=%E8%8B%8F%E5%B0%8F%E8%B0%A2; Domain=cmall.com; Path=/, loginAccount=%E8%8B%8F%E5%B0%8F%E8%B0%A2; Domain=cmall.com; Path=/, location=""; Domain=cmall.com; Path=/, iconUrl=diyrelease/cmall/o_1btbm4jo113041t5c1bs1qqj1jp39.jpg; Domain=cmall.com; Path=/, roleId=11; Domain=cmall.com; Path=/, regional=CN; Domain=cmall.com; Path=/, toKen=5000725ff365bf8f69596d352f2; Domain=cmall.com; Path=/',
-         'P3P': 'CP=CAO PSA OUR', 'Server': 'CMALL'
+        'User_code': '0', 'User_id': '320187', 'enshrines_key': '0',
+         'iconUrl': '"nospc/android/2018/1/22/artsDiyuserIcon2018012243341.jpg"', 'location': '""',
+         'loginAccount': '%E8%8B%8F%E5%B0%8F%E8%B0%A2', 'nickName': '%E8%8B%8F%E5%B0%8F%E8%B0%A2', 'regional': 'CN',
+         'roleId': '2', 'toKen': '994370493249a7bebec90bc6bac', 'JSESSIONID': '35F89A58074DAADDDAB926BB82D11C70'
     }
     return hander
 
