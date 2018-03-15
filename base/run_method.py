@@ -22,24 +22,25 @@ class RunMethod:
 
     def get_main(self,url,data=None,hander=None):
         res=None
-        if hander!=None:
-            res=requests.get(url=url,params=data,headers=hander)
-        else:
-            res=requests.get(url=url,params=data)
-        return res.json()
+        try:
+            if hander!=None:
+                res=requests.get(url=url,params=data,headers=hander)
+            else:
+                res=requests.get(url=url,params=data)
+            return res.json()
+        except:
+            logging.error("dfghjk")
     def json_main(self,url,data=None,hander=None):
         res = None
-        try:
-            if hander !=None:
-                res =requests.post(url=url,json=data,headers=hander)
-            else:
-                try:
-                    res=requests.post(url=url,json=data)
-                except:
-                    logging.error("url is None")
-                return res.json()
-        except:
-            logging.error("timeout")
+        if hander !=None:
+            res =requests.post(url=url,json=data,headers=hander)
+        else:
+            try:
+                res=requests.post(url=url,json=data)
+            except:
+                logging.error("url is None")
+        return res.json()
+
 
 
 

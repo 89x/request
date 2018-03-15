@@ -10,7 +10,6 @@
 from base.open_excel import OpenExcel
 from common.open_json import *
 from config import data_config
-import logging
 class RequestData:
     def __init__(self):
         self.open_excel=OpenExcel()
@@ -36,8 +35,8 @@ class RequestData:
     def get_is_hander(self,row):
         col= int (data_config.get_hander())
         hander= self.open_excel.get_all_value(row,col)
-        if hander.upper() == 'Y':
-            return data_config.get_hander_value()
+        if hander != '':
+            return hander
         else:
             return None
 

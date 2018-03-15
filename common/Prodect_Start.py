@@ -54,11 +54,11 @@ class RunMain:
                     #获取依赖的key
                     depend_key = self.data.get_depend_data(i)
                     request_mode[depend_key]= depend_response_data
-                if hander =="w":
+                if hander =="W":
                     res=self.run_method.run_main(request_mode,url,data)
                     op_hander=OpenHeader(url,data)
                     op_hander.write_cookie()
-                elif  hander == "y":
+                elif  hander == "Y":
                     op_json = OpenJson(os.path.abspath('..'+'/json/cookies.json'))
                     cookie = op_json.get_cookie()
                     res = self.run_method.run_main(request_mode,url,data,cookie)

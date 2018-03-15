@@ -1,16 +1,26 @@
-# coding:utf-8
-import requests
-import json
-url1="http://www.cmall.com/memberSite/sso/loginJson"
-data1 = {"loginAccount":"苏小谢","password":"xiehengda"}
-url="https://www.cmall.com/goodsSite/agentAccount/queryAgentAccountInfo"
-data= {'phoneNo': '18697980508'}
-url2="https://m.taidu.com/orderPaySite/tude/cart/getCartCount"
-cookie = {'User_code': '0', 'User_id': '320187', 'enshrines_key': '0', 'iconUrl': '"http://image.cmall.com/imgsrv/diyrelease/cmall/o_1c53u81ja2mh56d10o0s3vavn9.png"', 'location': '""', 'loginAccount': '%E8%8B%8F%E5%B0%8F%E8%B0%A2', 'mchRoles': '0', 'nickName': '%E8%8B%8F%E5%B0%8F%E8%B0%A2', 'regional': 'CN', 'roleId': '2', 'toKen': 'cb2beaff01522b32fa5164b7e97', 'JSESSIONID': 'FFC1F2880C974BC2780826BD3BA7277B'}
-re= requests.get(url1,data1)
-res= re.cookies
-print(res)
-sa = requests.utils.dict_from_cookiejar(res)
-print(sa)
-res1= requests.post(url2,cookies=sa)
-print(res1.text)
+import pymysql  #导入 pymysql
+
+#打开数据库连接
+db= pymysql.connect(host="10.24.194.171",user="artsuser",
+ 	password="artspassword",db="ishop",port=3306)
+
+# 使用cursor()方法获取操作游标
+cur = db.cursor()
+
+#1.查询操作
+# 编写sql 查询语句  user 对应我的表名
+sql = "select * from tb_user  where NICKNAME='xiehengda'"
+try:
+	cur.execute(sql) 	#执行sql语句
+
+	results = cur.fetchall()	#获取查询的所有记录
+	#遍历结果
+	for row in results :
+            id = row[0]
+            name = row[1]
+            password = row[2]
+            print(id,name)
+except Exception as e:
+	raise e
+finally:
+	db.close()	#关闭连接

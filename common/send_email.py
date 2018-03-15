@@ -30,6 +30,11 @@ class SendMail:
 
         user_list = ['xiehengda@cydeng.com']
         sub = '接口自动化测试报告'
-        content = "此次一共运行接口个数为%s个,通过个数为%s个,失败个数为%s个,通过率为%s,失败率为%s"%(countnum,passnum,failnum,pass_result,fail_result)
+        content = "此次一共运行接口个数为%s个"\
+                  "\n通过个数为%s个" \
+                  "\n失败个数为%s个"\
+                  "\n通过率为%s"\
+                  "\n失败率为%s"\
+                  %(countnum,passnum,failnum,pass_result,fail_result)
         self.send_mail(user_list, sub, content)
 

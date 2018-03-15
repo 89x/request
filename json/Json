@@ -1,6 +1,10 @@
 {
-"bannerlist":{"loginAccount":"苏小谢","password":"xiehengda"},
-"loginJson":{"loginAccount":"18697980508","password":"xiehengda","rememberMe":"0"},
-"cartlist":{"abbr":"CN","pageNo":"1","clientType":"H5","pageSize":"30"},
-"shrrr":{"phoneNo":"18801880488"}
+"login":{"loginAccount":"苏小谢","password":"xiehengda"},
+"queryAgentAccountInfo0":{"phoneNo":"18801880488"},
+"queryAgentAccountInfo1":{"phoneNo":"11111111111"},
+"queryAgentAccountInfo2":{"phoneNo":"null"},
+"queryAgentAccountInfo3":{"phoneNo":" "},
+"queryAgentAccountInfo4":{},
+"eeeeeeeee": {"abbr": "CN", "clientType": "web", "productId": "501", "skuGroup": "", "clientVersion": ""}
+
 }
